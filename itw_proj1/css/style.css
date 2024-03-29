@@ -42,11 +42,11 @@ h3 {
     font-family: url("../fonts/textile.ttf");
 }
 
-/*
-div {
-    padding-top: 100 px;
-    padding-bottom: 100 px;
-}*/
+
+main section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
 
 .references,
 .name,
@@ -244,6 +244,15 @@ nav {
     border-right: 1px dashed green;
 }
 
+
+main {
+    position: relative;
+    background-color: white;
+    top: 0;
+    background-image: url("../img/bg/bg-body.svg");
+}
+
+
 #about {
     top: 0;
     max-width: 1200px;
@@ -258,12 +267,18 @@ nav {
     text-align: center;
 }
 
-.name {
-    position: relative;
-    left: 15vw;
-    color: #333333;
+.heading h2 {
+    color: green;
+    font-size: 36px;
 }
 
+.name {
+    position: relative;
+    left: 18%;
+    color: #333333;
+    font-size: 18px;
+    font-style: italic;
+}
 
 .references ul {
     list-style: none;
@@ -289,28 +304,29 @@ nav {
     font-weight: 600;
 }
 
+#about::after {
+    content: "";
+    position: absolute;
+    top: 86vh;
+    left: 0;
+    width: 100vw;
+    height: 300px;
+    background-image: url("../img/custom/hr.svg");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    z-index: +5;
 
-
-
-
-
-main {
-    position: relative;
-    background-color: white;
-    top: 0;
-    background-image: url("../img/bg/bg-body.svg");
 }
-
 
 #team {
     background-image: url("../img/bg/bg-team.jpg");
-    position: absolute;
+    position: relative;
     background-size: cover;
     /* Obrázek se přizpůsobí velikosti okna */
     background-position: center;
     left: 0;
-    top: 200vh;
-    height: 100vh;
+    top: 0;
+    height: 200vh;
     width: 100%;
     overflow: hidden;
 }
