@@ -10,6 +10,10 @@
  */
 
 
+/* '*' predstavuje vsechny prvky na strance 
+*  a tady zrusi vsechny okraje 
+*  a nastavi sirka*vyska prvku = prvek + padding + border
+*/
 * {
     margin: 0;
     padding: 0;
@@ -30,11 +34,13 @@ body {
 
 #header-title,
 h2 {
+    /*nastaveni pro 2 druhy prvku*/
     font-family: 'Calistoga';
     letter-spacing: 0.2rem;
 }
 
 .heading span {
+    /*nastaveni pro prvek ktery je jak .heading, tak span*/
     font-size: 1.5rem;
 }
 
@@ -62,30 +68,27 @@ nav {
 }
 */
 
-/*
-li {
-    display: inline;
-}*/
 
 
 #header-title {
     background-image: url("../img/bg/bg-header.jpg");
     position: fixed;
     background-size: cover;
-    /* Obrázek se přizpůsobí velikosti okna */
     background-position: center;
     left: 0;
     top: 0vh;
+    /*vh jednotka vysky*/
     height: 100vh;
     width: 100vw;
+    /*vw jednotka sirky*/
     overflow: hidden;
     z-index: -1;
 }
 
+/*kdyz je stranka scrollnuta tak span zmizi*/
 .scrolled #header-title span {
     display: none;
 }
-
 
 #header-title span {
     color: white;
@@ -98,6 +101,7 @@ li {
 }
 
 #header-title span:nth-child(1) {
+    /*pro prvni span prvek*/
     font-size: 110px;
     text-transform: uppercase;
     font-weight: bold;
@@ -122,6 +126,7 @@ li {
 
 #header-title span:nth-child(4)::before,
 #header-title span:nth-child(4)::after {
+    /*zobrazi se pred a za span prvkem*/
     content: "\"";
     margin: 0 10px;
 }
@@ -138,11 +143,11 @@ li {
     height: 100px;
     background-image: url('../img/custom/flag.svg');
     background-size: cover;
-    pointer-events: none;
 }
 
 #header-title span:nth-child(2)::after {
     content: "";
+    /*content musi byt pokazde aby se tento prvek zobrazil*/
     margin-top: 0;
     display: inline-block;
     position: relative;
@@ -152,9 +157,9 @@ li {
     width: 100px;
     height: 100px;
     transform: scaleX(-1);
+    /*zrdlove prevrati na os x*/
     background-image: url('../img/custom/flag.svg');
     background-size: cover;
-    pointer-events: none;
 }
 
 
@@ -175,6 +180,7 @@ li {
     background-repeat: repeat-x;
     background-position: center;
     z-index: +1;
+    /*z-index dava prvek do popredi nebo do pozadi*/
 }
 
 #header-menu {
@@ -198,6 +204,7 @@ li {
     text-align: center;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
+    /*repeat = opakuj 6x, sloupece o stejne sirce*/
     grid-gap: 10px;
     list-style-type: none;
     padding: 10px;
@@ -238,8 +245,8 @@ nav {
     margin: 0 auto;
     background-color: white;
     padding-top: 200px;
-    padding-left: 64px;
-    padding-right: 64px;
+    padding-left: 60px;
+    padding-right: 60px;
     border-left: 1px dashed green;
     border-right: 1px dashed green;
 }
@@ -260,9 +267,8 @@ main {
     width: 100vw;
     margin: 0 auto;
     background-color: white;
-    padding-top: 100px;
-    padding-left: 64px;
-    padding-right: 64px;
+    padding-left: 60px;
+    padding-right: 60px;
     border-left: 1px dashed green;
     border-right: 1px dashed green;
     text-align: center;
@@ -270,6 +276,7 @@ main {
 
 .heading h2 {
     text-transform: uppercase;
+    /*zmeni text na velka pismena*/
     color: green;
     font-size: 20px;
 }
@@ -317,8 +324,8 @@ main {
     content: "";
     position: absolute;
     top: -6%;
-    left: 0;
-    width: 100vw;
+    left: -2vw;
+    width: 102vw;
     height: 300px;
     background-image: url("../img/custom/hr.svg");
     background-repeat: repeat-x;
@@ -330,8 +337,8 @@ main {
     content: "";
     position: absolute;
     bottom: -34%;
-    left: 0;
-    width: 100vw;
+    left: -2vw;
+    width: 102vw;
     height: 300px;
     background-image: url("../img/custom/hr.svg");
     background-repeat: repeat-x;
@@ -346,7 +353,7 @@ main {
     background-position: center;
     left: 0;
     top: 0;
-    height: 100%;
+    height: 100vh;
     width: 100%;
     text-align: center;
 }
@@ -355,6 +362,7 @@ main {
     height: 300px;
     padding: 5px;
     order: -1;
+    /*prvek bude v poradi o jedna driv*/
 }
 
 #team .section-item:hover img {
@@ -363,12 +371,14 @@ main {
 
 #team .section-item:nth-child(1):hover::before,
 #team .section-item:nth-child(3):hover::before {
-    background-color: rgba(0, 255, 30, 0.05);
+    background-color: #cce6c2;
+    opacity: 0.2;
 }
 
 #team .section-item:nth-child(2):hover::before,
 #team .section-item:nth-child(4):hover::before {
-    background-color: rgba(255, 0, 0, 0.05);
+    background-color: #f7ced3;
+    opacity: 0.2;
 }
 
 #tema .section-item h3 {
@@ -376,11 +386,11 @@ main {
 }
 
 #team .section-item p {
-    order: 2;
+    order: 1;
 }
 
 #team .section-item ul {
-    order: 1;
+    order: -1;
 }
 
 #team .section-content {
@@ -424,6 +434,70 @@ main {
     background-color: rgba(255, 255, 255, 0.3);
     z-index: 1;
 }
+
+#events {
+    top: 0;
+    max-width: 1200px;
+    width: 100vw;
+    margin: 0 auto;
+    background-color: white;
+    padding-left: 60px;
+    padding-right: 60px;
+    border-left: 1px dashed green;
+    border-right: 1px dashed green;
+    text-align: center;
+}
+
+#events img:nth-child(1),
+#events img:nth-child(3) {
+    width: 40%;
+    float: left;
+    /*float uvolni prvek z klasickeho zapisovani na stranku*/
+    margin-right: 5px;
+}
+
+
+#events img:nth-child(2) {
+    float: right;
+    right: 10vw;
+    position: relative;
+}
+
+#events .section-item h3 {
+    display: block;
+    position: relative;
+    right: 15vw;
+    /* Zajištění, aby se nadpis nacházel pod obrázkem */
+}
+
+#events .section-item h3:hover {
+    color: green;
+}
+
+#events .events-props {
+    display: grid;
+    grid-template-columns: 1fr 1fr 6fr;
+    position: relative;
+}
+
+
+#events .references {
+    margin-left: 20px;
+}
+
+#events .section-item {
+    border-top: #cdcdcd 1px solid;
+    overflow: hidden;
+    height: 50vh;
+
+    padding-top: 5vh;
+}
+
+#events .section-item:first-child {
+    border-top: none;
+    margin-top: 5vh;
+}
+
 
 /*
 #heyoooo {
