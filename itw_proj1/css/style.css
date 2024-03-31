@@ -23,12 +23,12 @@
 
 body {
     margin: 0 auto;
-    min-width: 768px;
     padding: 0 auto;
     overflow-x: hidden;
     font-family: 'Spectral';
     font-size: 16px;
     color: #333333;
+    min-width: 768px;
 }
 
 
@@ -87,11 +87,31 @@ nav {
 
 /*kdyz je stranka scrollnuta tak span zmizi*/
 .scrolled #header-title span {
-    display: none;
+    /*display: none;*/
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+#header-title span:nth-child(1) {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#header-title span:nth-child(2) {
+    transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+}
+
+#header-title span:nth-child(3) {
+    transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+}
+
+#header-title span:nth-child(4) {
+    transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
 }
 
 #header-title span {
     color: white;
+    opacity: 1;
+    transform: translateY(0);
     position: relative;
     display: block;
     font-size: 35px;
@@ -106,21 +126,18 @@ nav {
     text-transform: uppercase;
     font-weight: bold;
     top: 20vh;
-    /* Velikost fontu pro první span */
 }
 
 #header-title span:nth-child(2) {
     font-size: 55px;
     text-transform: uppercase;
     font-weight: bold;
-    /* Velikost fontu pro první span */
 }
 
 #header-title span:nth-child(3) {
     font-size: 16px;
     text-transform: uppercase;
     font-weight: bold;
-    /* Velikost fontu pro první span */
 }
 
 
@@ -189,8 +206,8 @@ nav {
     height: 30vh;
     margin-top: 80vh;
     background-image: url('../img/bg/bg-body.svg');
+    background-attachment: fixed;
     background-color: white;
-
 }
 
 #header-menu nav {
@@ -256,6 +273,7 @@ main {
     position: relative;
     background-color: white;
     top: 0;
+    background-attachment: fixed;
     background-image: url("../img/bg/bg-body.svg");
     width: 100vw;
 }
@@ -336,7 +354,7 @@ main {
 
     content: "";
     position: absolute;
-    bottom: -34%;
+    bottom: -30%;
     left: -2vw;
     width: 102vw;
     height: 300px;
@@ -347,13 +365,14 @@ main {
 
 #team {
     background-image: url("../img/bg/bg-team.jpg");
-    position: relative;
+    background-attachment: fixed;
     background-size: cover;
+    position: relative;
     /* Obrázek se přizpůsobí velikosti okna */
     background-position: center;
     left: 0;
     top: 0;
-    height: 100vh;
+    height: 110vh;
     width: 100%;
     text-align: center;
 }
@@ -402,7 +421,8 @@ main {
     margin: 0 auto;
 }
 
-#team h2 {
+#team h2,
+#menu h2 {
     color: lightgreen;
 }
 
@@ -410,7 +430,8 @@ main {
     font-family: "Textile";
 }
 
-#team span {
+#team span,
+#menu .heading span {
     color: white;
     font-size: 32px;
 }
@@ -448,26 +469,18 @@ main {
     text-align: center;
 }
 
-#events img:nth-child(1),
-#events img:nth-child(3) {
+#events img {
     width: 40%;
-    float: left;
+    float: inline-start;
     /*float uvolni prvek z klasickeho zapisovani na stranku*/
     margin-right: 5px;
 }
 
 
-#events img:nth-child(2) {
-    float: right;
-    right: 10vw;
-    position: relative;
-}
-
 #events .section-item h3 {
     display: block;
     position: relative;
     right: 15vw;
-    /* Zajištění, aby se nadpis nacházel pod obrázkem */
 }
 
 #events .section-item h3:hover {
@@ -489,13 +502,109 @@ main {
     border-top: #cdcdcd 1px solid;
     overflow: hidden;
     height: 50vh;
-
     padding-top: 5vh;
 }
 
 #events .section-item:first-child {
     border-top: none;
     margin-top: 5vh;
+}
+
+
+#events .section-item:hover img {
+    transform: scale(1.05);
+}
+
+
+#menu::before {
+    content: "";
+    position: absolute;
+    top: -4%;
+    left: -2vw;
+    width: 102vw;
+    height: 300px;
+    background-image: url("../img/custom/hr.svg");
+    background-repeat: repeat-x;
+}
+
+#menu {
+    background-image: url("../img/bg/bg-menu.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    height: 200vh;
+    text-align: center;
+}
+
+#menu .section-content {
+    top: 0;
+    max-width: 1200px;
+    width: 100vw;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 0 auto;
+
+}
+
+#menu img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+}
+
+#menu .figures {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+#menu .figures:nth-child(1) {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+#menu .description:nth-child(1) {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    background-color: lightgreen;
+}
+
+#menu .description {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+#menu .section-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#menu .section-item:nth-child(3) {
+    flex-direction: column;
+    width: 100%;
+    width: auto;
+    justify-content: space-around;
+    align-items: center;
 }
 
 
